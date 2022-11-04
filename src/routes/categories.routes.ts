@@ -1,7 +1,7 @@
-import { response, Router } from 'express'
-import { v4 as uuidV4 } from 'uuid'
-import { Category } from '../model/Category'
-import { CategoriesRepository } from '../repositories/CategoriesRepository'
+import { Router } from 'express'
+import { Category } from '../modules/cars/models/Category'
+import { CategoriesRepository } from '../modules/cars/repositories/CategoriesRepository'
+import { CreateCategoryService } from '../modules/cars/services/CreateCategoryService'
  
 const categoriesRoutes = Router()
 
@@ -11,10 +11,18 @@ const categoriesRepository = new CategoriesRepository
 categoriesRoutes.post('/', (req, res) => {
   const {name, description} = req.body
 
-  categoriesRepository.create({name, description})
+  const createCategoryService = new CreateCategoryService(categoriesRepository)
 
-  return res.status(201).json({category})
+  createCategoryService.execute({name, description})
 
+  return res.status(201).send()
+
+})
+
+categoriesRoutes.get('/', (req, res) => {
+  const listCategories = categoriesRepository.list()
+
+  return res.status(200).json(listCategories)
 })
 
 export {categoriesRoutes}
