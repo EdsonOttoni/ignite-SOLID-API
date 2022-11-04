@@ -1,11 +1,10 @@
 import { Router } from 'express'
-import { Category } from '../modules/cars/models/Category'
+
 import { CategoriesRepository } from '../modules/cars/repositories/CategoriesRepository'
 import { CreateCategoryService } from '../modules/cars/services/CreateCategoryService'
  
 const categoriesRoutes = Router()
 
-const category = new Category()
 const categoriesRepository = new CategoriesRepository
 
 categoriesRoutes.post('/', (req, res) => {
