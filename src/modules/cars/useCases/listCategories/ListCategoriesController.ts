@@ -6,10 +6,6 @@ class ListCategoriesController {
 
   handle(req: Request, res: Response): Response {
     const listCategories = this.listCategoriesUseCase.execute()
-    console.log(
-      '🚀 ~ file: ListCategoriesController.ts ~ line 9 ~ ListCategoriesController ~ handle ~ listCategories',
-      listCategories
-    )
 
     return res.status(200).json(listCategories)
   }

@@ -1,15 +1,13 @@
 import express from 'express'
-import { categoriesRoutes } from './routes/categories.routes'
-import { specificationsRoutes } from './routes/specifications.routes'
+import { router } from './routes'
 
 const app = express()
-const port = process.env.PORT || 3333
+const PORT = process.env.PORT || 3333
 
 app.use(express.json())
 
-app.use('/categories', categoriesRoutes)
-app.use('/specifications', specificationsRoutes)
+app.use(router)
 
-app.listen(port, () => {
-  console.log(`Server is running in http://localhost:${port}/`)
+app.listen(PORT, () => {
+  console.log(`Server is running in http://localhost:${PORT}/`)
 })
