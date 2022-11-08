@@ -1,4 +1,4 @@
-import { Category } from "../../models/Category";
+import { Category } from '../../models/Category'
 
 interface ICategoriesRepository {
   create(name: string, description: string): void
@@ -6,4 +6,4 @@ interface ICategoriesRepository {
   findByName(nome: string): Category
 }
 
-export {ICategoriesRepository}
+export { ICategoriesRepository }
