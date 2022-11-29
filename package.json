@@ -5,24 +5,20 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/index.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
-    "migration:create": "ts-node-dev ./node_modules/typeorm/cli migration:create",
-    "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./src/database/index.ts",
-    "migration:revert": "ts-node-dev ./node_modules/typeorm/cli migration:revert -d ./src/database/index.ts"
+    "dev2": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/index.ts",
+    "dev": "tsx watch --ignore node_modules src/index.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^4.6.1",
     "csv-parse": "^5.3.2",
     "express": "^4.18.2",
     "multer": "^1.4.5-lts.1",
     "pg": "^8.8.0",
-    "reflect-metadata": "^0.1.13",
+    "prisma": "^4.6.1",
     "swagger-ui-express": "^4.6.0",
-    "tsyringe": "^4.7.0",
-    "typeorm": "^0.3.10",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -37,6 +33,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.7.1",
     "ts-node-dev": "^2.0.0",
+    "tsx": "^3.12.1",
     "typescript": "^4.8.4"
   }
 }

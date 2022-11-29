@@ -1,4 +1,4 @@
-import { Category } from '../entities/Category'
+import { Categories as Category } from '@prisma/client'
 
 interface ICreateCategoryDTO {
   name: string

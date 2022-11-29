@@ -3,7 +3,8 @@ import {
   ICreateSpecificationDTO,
 } from './ISpecificationsRepository'
 
-import { Specification } from '../entities/Specification'
+type Specification = any
+
 class SpecificationsRepository implements ISpecificationsRepository {
   private specifications: Specification[]
 
@@ -12,7 +13,8 @@ class SpecificationsRepository implements ISpecificationsRepository {
   }
 
   create({ description, name }: ICreateSpecificationDTO): void {
-    const specification = new Specification()
+    //const specification = new Specification()
+    const specification = {}
 
     Object.assign(specification, {
       name,

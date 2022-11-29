@@ -1,34 +1,33 @@
-import { Repository } from 'typeorm'
-import { AppDataSource } from '../../../database'
-import { Category } from '../entities/Category'
+import { PrismaClient } from '@prisma/client'
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from './ICategoriesRepository'
 
 class CategoriesRepository implements ICategoriesRepository {
-  private repository: Repository<Category>
+  private prisma = new PrismaClient()
 
-  constructor() {
-    this.repository = AppDataSource.getRepository(Category)
-  }
-
-  async create({ name, description }: ICreateCategoryDTO): Promise<void> {
-    const category = this.repository.create({
-      name,
-      description,
+  async create({ name, description }: ICreateCategoryDTO) {
+    await this.prisma.categories.create({
+      data: {
+        name,
+        description,
+      },
     })
-
-    await this.repository.save(category)
   }
 
-  async list(): Promise<Category[]> {
-    const categoriesList = await this.repository.find()
+  async list() {
+    const categoriesList = await this.prisma.categories.findMany()
+
     return categoriesList
   }
 
-  async findByName(name: string): Promise<Category> {
-    const category = await this.repository.findOneBy({ name })
+  async findByName(name: string) {
+    const category = await this.prisma.categories.findFirst({
+      where: {
+        name,
+      },
+    })
 
     return category
   }
