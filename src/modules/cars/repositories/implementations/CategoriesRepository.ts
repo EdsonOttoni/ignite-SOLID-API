@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client'
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
-} from './ICategoriesRepository'
+} from '../ICategoriesRepository'
 
 class CategoriesRepository implements ICategoriesRepository {
   private prisma = new PrismaClient()
@@ -18,6 +18,10 @@ class CategoriesRepository implements ICategoriesRepository {
 
   async list() {
     const categoriesList = await this.prisma.categories.findMany()
+    console.log(
+      '🚀 ~ file: CategoriesRepository.ts:21 ~ CategoriesRepository ~ list ~ categoriesList',
+      categoriesList
+    )
 
     return categoriesList
   }
@@ -26,6 +30,9 @@ class CategoriesRepository implements ICategoriesRepository {
     const category = await this.prisma.categories.findFirst({
       where: {
         name,
+      },
+      orderBy: {
+        id: 'asc',
       },
     })
 

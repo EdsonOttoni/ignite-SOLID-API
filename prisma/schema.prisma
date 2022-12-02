@@ -16,3 +16,21 @@ model categories {
   description String
   createdAt   DateTime @default(now())
 }
+
+model specifications {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model users {
+  id            String   @id @default(uuid())
+  name          String   @unique
+  username      String
+  password      String
+  email         String
+  driverLicense String
+  isAdmin       String
+  creatdAt      DateTime @default(now())
+}
