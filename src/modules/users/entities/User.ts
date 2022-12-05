@@ -8,7 +8,7 @@ class User {
   public password: string
   public driver_license: string
   public isAdmin: boolean
-  public avatar: string
+  public avatar?: string
   public created_at: Date
 
   constructor() {

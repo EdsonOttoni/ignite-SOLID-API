@@ -23,8 +23,14 @@ class UserRepository implements IUserRepository {
     throw new Error('Method not implemented.')
   }
 
-  findByEmail(email: string): Promise<User> {
-    throw new Error('Method not implemented.')
+  async findByEmail(email: string): Promise<User> {
+    const user = await this.prisma.users.findFirst({
+      where: {
+        email,
+      },
+    })
+
+    return user
   }
 
   findByUsername(username: string): Promise<User> {
