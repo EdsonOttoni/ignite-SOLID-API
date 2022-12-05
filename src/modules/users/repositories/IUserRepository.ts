@@ -2,7 +2,7 @@ import { ICreateUserDTO } from '../dto/ICreateUserDTO'
 import { User } from '../entities/User'
 
 interface IUserRepository {
-  updateUser(user: User)
+  updateUser(user: User): Promise<void>
   findByEmail(email: string): Promise<User>
   create(data: ICreateUserDTO): Promise<void>
   findByUsername(username: string): Promise<User>
