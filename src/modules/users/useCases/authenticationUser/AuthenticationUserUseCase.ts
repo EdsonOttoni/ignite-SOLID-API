@@ -35,7 +35,7 @@ class AuthenticationUserUseCase {
 
     const passwordMatch = await compare(password, user.password)
 
-    if (!password) {
+    if (!passwordMatch) {
       throw new Error('Email or password incorrect')
     }
 
