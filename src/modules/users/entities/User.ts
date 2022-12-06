@@ -6,15 +6,15 @@ class User {
   public username: string
   public email: string
   public password: string
-  public driver_license: string
+  public driverLicense: string
   public isAdmin: boolean
   public avatar?: string
-  public created_at: Date
+  public createdAt: Date
 
   constructor() {
     if (!this.id) {
       this.id = uuidV4()
-      this.created_at = new Date()
+      this.createdAt = new Date()
       this.isAdmin = false
     }
   }
