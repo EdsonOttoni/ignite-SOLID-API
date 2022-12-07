@@ -38,7 +38,13 @@ class UserRepository implements IUserRepository {
   }
 
   findById(id: string): Promise<User> {
-    throw new Error('Method not implemented.')
+    const user = this.prisma.users.findFirst({
+      where: {
+        id,
+      },
+    })
+
+    return user
   }
 
   list(): Promise<User[]> {
