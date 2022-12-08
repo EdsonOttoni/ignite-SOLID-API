@@ -1,5 +1,6 @@
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+import { AppError } from '../../../../errors/AppError'
 
 import { UserRepository } from '../../repositories/implementations/UserRepository'
 
@@ -30,13 +31,13 @@ class AuthenticationUserUseCase {
     const user = await this.userRepository.findByEmail(email)
 
     if (!user) {
-      throw new Error('Email or password incorrect')
+      throw new AppError('Email or password incorrect')
     }
 
     const passwordMatch = await compare(password, user.password)
 
     if (!passwordMatch) {
-      throw new Error('Email or password incorrect')
+      throw new AppError('Email or password incorrect')
     }
 
     const token = sign({}, '1a36591bceec49c832079e270d7e8b73', {

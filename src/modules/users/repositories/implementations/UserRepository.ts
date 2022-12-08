@@ -2,6 +2,7 @@ import { IUserRepository } from '../IUserRepository'
 import { ICreateUserDTO } from '../../dto/ICreateUserDTO'
 import { User } from '../../entities/User'
 import { PrismaClient } from '@prisma/client'
+import { AppError } from '../../../../errors/AppError'
 
 class UserRepository implements IUserRepository {
   private prisma = new PrismaClient()
@@ -20,7 +21,7 @@ class UserRepository implements IUserRepository {
   }
 
   async updateUser(user: User): Promise<void> {
-    throw new Error('Method not implemented.')
+    throw new AppError('Method not implemented.')
   }
 
   async findByEmail(email: string): Promise<User> {
@@ -34,7 +35,7 @@ class UserRepository implements IUserRepository {
   }
 
   findByUsername(username: string): Promise<User> {
-    throw new Error('Method not implemented.')
+    throw new AppError('Method not implemented.')
   }
 
   findById(id: string): Promise<User> {
@@ -48,7 +49,7 @@ class UserRepository implements IUserRepository {
   }
 
   list(): Promise<User[]> {
-    throw new Error('Method not implemented.')
+    throw new AppError('Method not implemented.')
   }
 }
 
