@@ -15,6 +15,7 @@ model categories {
   name        String
   description String
   createdAt   DateTime @default(now())
+  cars        cars[]
 }
 
 model specifications {
@@ -34,4 +35,18 @@ model users {
   driverLicense String
   isAdmin       Boolean? @default(false)
   createdAt     DateTime @default(now())
+}
+
+model cars {
+  id           String     @id @default(uuid())
+  name         String
+  description  String
+  dailyRate    Decimal
+  available    Boolean    @default(true)
+  licensePlate String
+  fineAmount   Decimal
+  brand        String
+  categoryId   String
+  category     categories @relation(fields: [categoryId], references: [id])
+  createdAt    DateTime   @default(now())
 }
