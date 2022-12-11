@@ -18,10 +18,6 @@ class CategoriesRepository implements ICategoriesRepository {
 
   async list() {
     const categoriesList = await this.prisma.categories.findMany()
-    console.log(
-      '🚀 ~ file: CategoriesRepository.ts:21 ~ CategoriesRepository ~ list ~ categoriesList',
-      categoriesList
-    )
 
     return categoriesList
   }

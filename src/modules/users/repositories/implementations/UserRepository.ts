@@ -8,9 +8,11 @@ class UserRepository implements IUserRepository {
   private prisma = new PrismaClient()
 
   async create(data: ICreateUserDTO): Promise<void> {
-    const { name, username, password, email, driverLicense } = data
+    const { id, avatar, name, username, password, email, driverLicense } = data
     await this.prisma.users.create({
       data: {
+        id,
+        avatar,
         name,
         username,
         driverLicense,

@@ -28,6 +28,7 @@ model users {
   id            String   @id @default(uuid())
   name          String   @unique
   username      String
+  avatar        String?
   password      String
   email         String
   driverLicense String
