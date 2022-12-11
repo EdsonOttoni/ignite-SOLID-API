@@ -1,4 +1,5 @@
-import { AppError } from '../../../../errors/AppError'
+import { AppError } from '../../../../shared/errors/AppError'
+
 import { ISpecificationsRepository } from '../../repositories/ISpecificationsRepository'
 
 interface IRequest {

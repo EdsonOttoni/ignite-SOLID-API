@@ -2,7 +2,7 @@ import { IUserRepository } from '../IUserRepository'
 import { ICreateUserDTO } from '../../dto/ICreateUserDTO'
 import { User } from '../../entities/User'
 import { PrismaClient } from '@prisma/client'
-import { AppError } from '../../../../errors/AppError'
+import { AppError } from '../../../../shared/errors/AppError'
 
 class UserRepository implements IUserRepository {
   private prisma = new PrismaClient()
