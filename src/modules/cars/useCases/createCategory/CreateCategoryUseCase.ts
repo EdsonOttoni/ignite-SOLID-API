@@ -1,16 +1,12 @@
+import { ICreateCategoryDTO } from '@modules/cars/dto/ICreateCategoryDTO'
 import { AppError } from '../../../../shared/errors/AppError'
 
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository'
 
-interface IRequest {
-  name: string
-  description: string
-}
-
 class CreateCategoryUseCase {
   constructor(private categoriesRepository: ICategoriesRepository) {}
 
-  async execute({ description, name }: IRequest): Promise<void> {
+  async execute({ description, name }: ICreateCategoryDTO): Promise<void> {
     const categoryAlreadyExists = await this.categoriesRepository.findByName(
       name
     )

@@ -46,7 +46,7 @@ model cars {
   licensePlate String
   fineAmount   Decimal
   brand        String
-  categoryId   String
+  categoryId   String     @unique
   category     categories @relation(fields: [categoryId], references: [id])
   createdAt    DateTime   @default(now())
 }

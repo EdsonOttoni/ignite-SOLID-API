@@ -1,16 +1,10 @@
+import { ICreateSpecificationDTO } from '@modules/cars/dto/ICreateSpecificationDTO'
 import { AppError } from '../../../../shared/errors/AppError'
-
 import { ISpecificationsRepository } from '../../repositories/ISpecificationsRepository'
-
-interface IRequest {
-  name: string
-  description: string
-}
-
 class CreateSpecificationsUseCase {
   constructor(private specificationsRepository: ISpecificationsRepository) {}
 
-  execute({ description, name }: IRequest): void {
+  execute({ description, name }: ICreateSpecificationDTO): void {
     const specificationAlreadyExists =
       this.specificationsRepository.findByName(name)
 

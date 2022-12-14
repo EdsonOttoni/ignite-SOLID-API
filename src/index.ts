@@ -2,8 +2,8 @@ import express, { NextFunction, Request, Response } from 'express'
 import 'express-async-errors'
 import swaggerUi from 'swagger-ui-express'
 
-import { AppError } from './errors/AppError'
-import { router } from './routes'
+import { AppError } from './shared/errors/AppError'
+import { router } from './shared/http/routes'
 import swaggerFile from './swagger.json'
 
 async function initializedServer() {

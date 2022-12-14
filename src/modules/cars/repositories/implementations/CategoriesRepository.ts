@@ -1,8 +1,7 @@
 import { PrismaClient } from '@prisma/client'
-import {
-  ICategoriesRepository,
-  ICreateCategoryDTO,
-} from '../ICategoriesRepository'
+
+import { ICreateCategoryDTO } from '@modules/cars/dto/ICreateCategoryDTO'
+import { ICategoriesRepository } from '../ICategoriesRepository'
 
 class CategoriesRepository implements ICategoriesRepository {
   private prisma = new PrismaClient()
