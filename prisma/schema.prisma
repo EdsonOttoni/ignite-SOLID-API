@@ -15,7 +15,8 @@ model categories {
   name        String
   description String
   createdAt   DateTime @default(now())
-  cars        cars[]
+
+  cars cars[]
 }
 
 model specifications {
@@ -23,6 +24,8 @@ model specifications {
   name        String
   description String
   createdAt   DateTime @default(now())
+
+  specifications_cars specifications_cars[]
 }
 
 model users {
@@ -38,15 +41,29 @@ model users {
 }
 
 model cars {
-  id           String     @id @default(uuid())
+  id           String   @id @default(uuid())
   name         String
   description  String
   dailyRate    Decimal
-  available    Boolean    @default(true)
+  available    Boolean  @default(true)
   licensePlate String
   fineAmount   Decimal
   brand        String
-  categoryId   String     @unique
-  category     categories @relation(fields: [categoryId], references: [id])
-  createdAt    DateTime   @default(now())
+  createdAt    DateTime @default(now())
+
+  categoryId String
+  category   categories @relation(fields: [categoryId], references: [id])
+
+  specifications_cars specifications_cars[]
+}
+
+model specifications_cars {
+  car             cars           @relation(fields: [carId], references: [id])
+  specification   specifications @relation(fields: [specificationId], references: [id])
+  carId           String
+  specificationId String
+
+  assignedAt DateTime @default(now())
+
+  @@id([carId, specificationId])
 }

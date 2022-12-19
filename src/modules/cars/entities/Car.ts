@@ -1,5 +1,6 @@
 import { Decimal } from '@prisma/client/runtime'
 import { v4 as uuidV4 } from 'uuid'
+import { Specification } from './Specification'
 
 class Car {
   public id?: string
@@ -10,8 +11,11 @@ class Car {
   public licensePlate: string
   public fineAmount: Decimal
   public brand: string
-  public categoryId?: string
   public createdAt: Date
+
+  public categoryId?: string
+
+  public specifications?: Specification[]
 
   constructor() {
     if (!this.id) {

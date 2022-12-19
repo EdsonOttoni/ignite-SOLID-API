@@ -40,8 +40,8 @@ class UserRepository implements IUserRepository {
     throw new AppError('Method not implemented.')
   }
 
-  findById(id: string): Promise<User> {
-    const user = this.prisma.users.findFirst({
+  async findById(id: string): Promise<User> {
+    const user = await this.prisma.users.findFirst({
       where: {
         id,
       },

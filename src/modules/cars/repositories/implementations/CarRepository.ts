@@ -8,8 +8,8 @@ import { IListCarAvailableDTO } from '@modules/cars/dto/IListCarAvailableDTO'
 class CarRepository implements ICarRepository {
   private prisma = new PrismaClient()
 
-  async create(data: ICreateCarDTO): Promise<void> {
-    await this.prisma.cars.create({
+  async create(data: ICreateCarDTO): Promise<Car> {
+    const car = await this.prisma.cars.create({
       data: {
         name: data.name,
         description: data.description,
@@ -20,6 +20,8 @@ class CarRepository implements ICarRepository {
         licensePlate: data.licensePlate,
       },
     })
+
+    return car
   }
 
   async listAllCarsAvailable({
@@ -49,6 +51,16 @@ class CarRepository implements ICarRepository {
     return carsAvailable
   }
 
+  async findById(id: string): Promise<Car> {
+    const car = await this.prisma.cars.findFirst({
+      where: {
+        id,
+      },
+    })
+
+    return car
+  }
+
   async findByLicensePlate(licensePlate: string): Promise<Car> {
     const car = await this.prisma.cars.findFirst({
       where: {
@@ -57,6 +69,27 @@ class CarRepository implements ICarRepository {
     })
 
     return car
+  }
+
+  async assignSpecification(id: string, sId: string[]): Promise<Car> {
+    const assignSpecification = await this.prisma.cars.update({
+      where: {
+        id,
+      },
+      data: {
+        specifications_cars: {
+          create: [
+            {
+              specification: {
+                connect: sId.map(id => ({ id })),
+              },
+            },
+          ],
+        },
+      },
+    })
+
+    return assignSpecification
   }
 }
 

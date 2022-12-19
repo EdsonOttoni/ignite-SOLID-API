@@ -24,7 +24,8 @@ class CreateCarController {
       licensePlate,
       name,
     })
-    return res.json(201).json(car)
+
+    return res.status(201).json(car)
   }
 }
 

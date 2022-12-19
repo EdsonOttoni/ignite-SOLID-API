@@ -4,15 +4,15 @@ import { ISpecificationsRepository } from '../../repositories/ISpecificationsRep
 class CreateSpecificationsUseCase {
   constructor(private specificationsRepository: ISpecificationsRepository) {}
 
-  execute({ description, name }: ICreateSpecificationDTO): void {
+  async execute({ description, name }: ICreateSpecificationDTO): Promise<void> {
     const specificationAlreadyExists =
-      this.specificationsRepository.findByName(name)
+      await this.specificationsRepository.findByName(name)
 
     if (specificationAlreadyExists) {
       throw new AppError('Specification already exists')
     }
 
-    this.specificationsRepository.create({
+    await this.specificationsRepository.create({
       name,
       description,
     })
