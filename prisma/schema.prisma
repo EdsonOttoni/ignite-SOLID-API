@@ -55,6 +55,7 @@ model cars {
   category   categories @relation(fields: [categoryId], references: [id])
 
   specifications_cars specifications_cars[]
+  cars_image          cars_image[]
 }
 
 model specifications_cars {
@@ -66,4 +67,13 @@ model specifications_cars {
   assignedAt DateTime @default(now())
 
   @@id([carId, specificationId])
+}
+
+model cars_image {
+  id         String   @id @default(uuid())
+  imageName  String[]
+  created_at DateTime @default(now())
+
+  carsId String
+  cars   cars   @relation(fields: [carsId], references: [id])
 }

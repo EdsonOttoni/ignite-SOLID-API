@@ -1,5 +1,4 @@
 import { ICreateCarDTO } from '../dto/ICreateCarDTO'
-import { ICreateCarSpecification } from '../dto/ICreateCarSpecification'
 import { IListCarAvailableDTO } from '../dto/IListCarAvailableDTO'
 import { Car } from '../entities/Car'
 
