@@ -31,6 +31,12 @@
     - O Usuário pode cadastrar mais de uma imagem para o mesmo carro.
 
     - O aluguel tem duração mínima de 24 hora.
+    - Ao realizar um aluguel, o status do carro deve ser alterado para indisponível.
+    - Ao realizar a devolução, o carro deverá ser liberado para outro aluguel.
+    - Ao realizar a devolução, o usuário deverá ser liberado para outro aluguel.
+    - Ao realizar a devolução, deverá ser calculado o toral do aluguel.
+    - Caso o horário de devolução seja superior ao horário previsto de entrega, deverá ser cobrado multa proporcionou aos dias de atraso.
+    - Caso haja multa, deverá ser somado ao total do aluguel.
     - Não é possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuário.
     - Não é possível cadastrar um novo aluguel caso já exista um aberto para o mesmo carro.
 
